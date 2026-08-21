@@ -55,26 +55,70 @@ class SinglyLinkedList:
       return
     newNode = Node (data)
     if (self.head.data == existingData):
-      self.head.next = newNode
+      newNode.next = self.head
       self.head = newNode
       return
-    finder = self.head
-    while (finder.next != None):
-      if (finder.data == existingData):
-        temp = finder.next
-        finder.next = newNode
+    founder = self.head
+    while (founder.next != None):
+      if (founder.data == existingData):
+        temp = founder.next
+        founder.next = newNode
         newNode.next = temp
-      finder = finder.next
+        return
+      founder = founder.next
+    if (founder.data == existingData):
+      founder.next = newNode
+      newNode.next = None
+      return
     print("Not Found!")
     return
-
+  def deleteAtTheBeginning (self):
+    if (self.head == None):
+      print("Empty!")
+      return
+    self.head = self.head.next
+    return
+  def deleteAtTheEnd(self):
+    if (self.head == None):
+      print("Empty!")
+      return
+    temp = self.head
+    prev = temp
+    while (temp.next != None):
+      prev = temp
+      temp = temp.next
+    if (prev.data == temp.data):
+      self.head = None
+      return
+    prev.next = None
+    return
+  def deleteInTheMiddle(self, existingData):
+    if (self.head == None):
+      print("Empty!")
+      return
+    temp = self.head
+    prev = temp
+    while (temp.next != None):
+      if (prev.data == temp.data == existingData):
+        self.head = self.head.next
+        return
+      if (temp.data == existingData):
+        prev.next = temp.next
+        return
+      prev = temp
+      temp = temp.next
+    if (temp.data == existingData):
+      prev.next = None
+      return
+    else:
+      print("Not Found!")
+      return
 singlyLinkedList = SinglyLinkedList()
-singlyLinkedList.insertAtTheBeginning(10)
-singlyLinkedList.insertAtTheBeginning(20)
-singlyLinkedList.insertAtTheBeginning(30)
-singlyLinkedList.insertAtTheBeginning(40)
+singlyLinkedList.insertAtTheEnd(10)
+singlyLinkedList.insertAtTheEnd(20)
+singlyLinkedList.insertAtTheEnd(30)
+singlyLinkedList.insertAtTheEnd(40)
 singlyLinkedList.insertAtTheEnd(50)
-singlyLinkedList.insertAtTheEnd(60)
-singlyLinkedList.insertAtTheEnd(70)
-singlyLinkedList.insertInTheMiddle(40, 45)
+singlyLinkedList.deleteInTheMiddle(50)
+singlyLinkedList.deleteInTheMiddle(10)
 singlyLinkedList.showData()
