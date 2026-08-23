@@ -44,6 +44,7 @@ console.log(stack.pop());
 console.log(stack.pop());
 console.log(stack.pop());
 console.log(stack.pop());
+console.log(stack.peek());
 if (stack.isEmpty()) {
   console.log("Empty Stack!");
 } else {
