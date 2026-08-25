@@ -1,9 +1,7 @@
-function calculateFactorial (number) {
-  if (number === 0 || number === 1) {
-    return 1;
-  } else {
-    return number * calculateFactorial (number - 1);
-  }
+
+function sum (number) {
+  if (number === 0) return 0;
+  return number + sum (number - 1);
 }
 
-console.log (calculateFactorial(5))
+console.log (sum (5));
