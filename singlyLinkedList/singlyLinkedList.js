@@ -6,12 +6,12 @@ class Node {
 }
 
 class SinglyLinkedList {
-  constructor () {
+  constructor() {
     this.head = null;
   }
-  showData () {
+  showData() {
     if (this.head === null) {
-      print(`Emtpy!`);
+      console.log("Empty!");
       return;
     }
     let temp = this.head;
@@ -20,22 +20,22 @@ class SinglyLinkedList {
       temp = temp.next;
     }
     console.log(`${temp.data}`);
-    return;
   }
-  length () {
+  length() {
     if (this.head === null) {
       return 0;
     }
     let count = 0;
-    let temp = temp.next;
+    let temp = this.head;
     while (temp.next !== null) {
       count++;
       temp = temp.next;
     }
     return ++count;
   }
-  insertAtTheBeginning (data) {
-    const newNode = new Node (data);
+
+  insertAtTheHead(data) {
+    const newNode = new Node(data);
     if (this.head === null) {
       this.head = newNode;
       return;
@@ -44,62 +44,65 @@ class SinglyLinkedList {
     this.head = newNode;
     return;
   }
-  insertAtTheEnd (data) {
-    const newNode = new Node (data);
+
+  insertAtTheTail(data) {
+    const newNode = new Node(data);
     if (this.head === null) {
       this.head = newNode;
       return;
     }
-    temp = this.head;
+    let temp = this.head;
     while (temp.next !== null) {
       temp = temp.next;
     }
     temp.next = newNode;
-    newNode.next = null;
     return;
   }
-  insertAtTheMiddle (existingData, data) {
-    const newNode = new Node (data);
+
+  insertAtTheMiddle(existingData, data) {
     if (this.head === null) {
-      console.log(`Empty!`);
       return;
     }
-    if (this.head.data === existingData) {
-      this.head.next = newNode;
-      return;
-    }
-    let founder = this.head;
-    while (founder.next !== null) {
-      if (founder.data === existingData) {
-        temp = founder.next;
-        temp.next = newNode;
-        newNode.next = temp;
+    let temp1 = this.head;
+    const newNode = new Node(data);
+    while (temp1.next !== null) {
+      if (temp1.data === existingData) {
+        let temp2 = temp1.next;
+        temp1.next = newNode;
+        newNode.next = temp2;
         return;
       }
+      temp1 = temp1.next;
     }
-    if (founder.data === existingData) {
-      founder.next = newNode;
-      newNode.next = null;
+    if (temp1.data === existingData) {
+      temp1.next = newNode;
       return;
     }
-    console.log(`Not Found!`);
+    console.log("Not Found!");
     return;
   }
-  deleteAtTheBeginning () {
+  deleteAtTheHead() {
     if (this.head === null) {
-      console.log(`Empty!`);
       return;
     }
-    this.head = null;
+    if (this.head.next === null) {
+      this.head = null;
+      return;
+    }
+    this.head = this.head.next;
     return;
   }
-  deleteAtTheEnd () {
+
+  deleteAtTheTail() {
     if (this.head === null) {
-      console.log(`Empty!`);
+      return;
+    }
+    if (this.head.next === null) {
+      this.head = null;
       return;
     }
     let temp = this.head;
-    let prev = temp;
+    let prev = this.head;
     while (temp.next !== null) {
       prev = temp;
       temp = temp.next;
@@ -107,15 +110,18 @@ class SinglyLinkedList {
     prev.next = null;
     return;
   }
-  deleteInTheMiddle (existingData) {
+  deleteAtTheMiddle(existingData) {
     if (this.head === null) {
-      console.log(`Empty!`);
+      return;
+    }
+    if (this.head.next === null && this.head.data === existingData) {
+      this.head = null;
       return;
     }
     let temp = this.head;
-    let prev = temp;
+    let prev = this.head;
     while (temp.next !== null) {
-      if (temp.data === prev.data && this.head.data === existingData) {
+      if (temp === prev && temp.data === existingData) {
         this.head = this.head.next;
         return;
       }
@@ -130,7 +136,18 @@ class SinglyLinkedList {
       prev.next = null;
       return;
     }
-    console.log(`Not Found!`);
+    console.log("Not found!");
     return;
   }
 }
+
+const singlyLinkedList = new SinglyLinkedList();
+singlyLinkedList.insertAtTheTail(10);
+singlyLinkedList.insertAtTheTail(20);
+singlyLinkedList.insertAtTheTail(30);
+singlyLinkedList.insertAtTheTail(40);
+singlyLinkedList.insertAtTheTail(50);
+singlyLinkedList.insertAtTheTail(60);
+singlyLinkedList.showData();
+singlyLinkedList.deleteAtTheMiddle(50);
+singlyLinkedList.showData();
