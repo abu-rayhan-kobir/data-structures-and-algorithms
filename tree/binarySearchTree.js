@@ -4,9 +4,10 @@ class Node  {
     this.left = null;
     this.right = null;
   }
+
   insert (root, data) {
     if (root === null) {
-      return Node (data);
+      return new Node (data);
     }
     if (root.data === data) {
       return root;
@@ -20,8 +21,8 @@ class Node  {
   }
 }
 
-const root = Node (20);
-root.left = Node (15);
-root.right = Node (30);
-root.left.left = Node (12);
-root.left.right = Node (30);
+const root = new Node (20);
+root.left = new Node (15);
+root.right = new Node (30);
+root.left.left = new Node (12);
+root.left.right = new Node (30);
