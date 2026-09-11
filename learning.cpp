@@ -137,6 +137,7 @@ int main () {
   singlyLinkedList.pushBack (60);
   singlyLinkedList.pushBack (70);
   singlyLinkedList.getData ();
+  singlyLinkedList.getData ();
   std :: cout << std :: endl;
   std :: cout << singlyLinkedList.search (550) << std :: endl;
   return 0;
