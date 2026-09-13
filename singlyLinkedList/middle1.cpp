@@ -75,7 +75,7 @@ int SinglyLinkedList :: size () {
 }
 
 Node* SinglyLinkedList :: middle () {
-  int middleCount = (this -> size () / 2) + 1;
+  int middleCount = this -> size () / 2;
   Node* temp = this -> head;
   for (int index = 0; index < middleCount; index++) {
     temp = temp -> next;
@@ -90,6 +90,7 @@ int main () {
   singlyLinkedList.pushBack (30);
   singlyLinkedList.pushBack (40);
   singlyLinkedList.pushBack (50);
+  singlyLinkedList.pushBack (60);
   singlyLinkedList.showData ();
   std :: cout << std :: endl;
   Node* middleNode = singlyLinkedList.middle ();
