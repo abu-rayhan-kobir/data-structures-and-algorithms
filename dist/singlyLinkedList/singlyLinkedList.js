@@ -64,15 +64,5 @@ class SinglyLinkedList {
         }
     }
 }
-const singlyLinkedList = new SinglyLinkedList();
-singlyLinkedList.insertionAtTheTail(10);
-singlyLinkedList.insertionAtTheTail(20);
-singlyLinkedList.insertionAtTheTail(30);
-singlyLinkedList.showData();
-singlyLinkedList.deleteAtTheHead();
-singlyLinkedList.deleteAtTheHead();
-singlyLinkedList.deleteAtTheHead();
-singlyLinkedList.deleteAtTheHead();
-console.log("----------------------------");
-singlyLinkedList.showData();
 export {};
+//# sourceMappingURL=singlyLinkedList.js.map

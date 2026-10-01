@@ -5,6 +5,8 @@
     "moduleDetection": "force",
     "noEmitOnError": true,
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "types": ["node"],
+    "sourceMap": true
   }
 }
